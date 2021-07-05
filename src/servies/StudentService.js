@@ -17,5 +17,9 @@ export const getAllStudent = async () => {
 export const searchStudent = async (searchValue) => {
   await delayAsync(2000);
 
-  return mockData;
+  if (!searchValue) {
+    return mockData;
+  }
+
+  return mockData.filter((i) => i.name.toLowerCase().includes(searchValue));
 };

@@ -2,24 +2,22 @@ import React, { useState } from "react";
 import { AppHeader } from "../AppHeader/AppHeader";
 import StudentList from "../StudentList/StudentList";
 import { usePromiseResult } from "use-promise-result";
-import { getAllStudent } from "../../servies/StudentService";
+import { getAllStudent, searchStudent } from "../../servies/StudentService";
 
 const Home = () => {
-  const { loading, error, success, reload, data } =
-    usePromiseResult(getAllStudent);
-
   const [searchingValue, setSearchingValue] = useState("");
+
+  const { loading, error, success, reload, data } = usePromiseResult(() =>
+    searchStudent(searchingValue)
+  );
 
   const handleSearch = (inputVal) => {
     setSearchingValue(inputVal.toLowerCase());
+    reload();
   };
 
   const renderStudentList = () => {
-    const filteredList = data.filter((i) =>
-      i.name.toLowerCase().includes(searchingValue)
-    );
-
-    return <StudentList data={filteredList} />;
+    return <StudentList data={data} />;
   };
 
   const renderStatus = () => {
