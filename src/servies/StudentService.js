@@ -1,5 +1,15 @@
 import mockData from "../MOCK_DATA";
 
+const delayAsync = (timeout) => {
+  return new Promise((resovle) => {
+    setTimeout(() => {
+      resovle();
+    }, timeout);
+  });
+};
+
 export const getAllStudent = async () => {
+  await delayAsync(2000);
+
   return mockData;
 };
