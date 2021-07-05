@@ -13,3 +13,9 @@ export const getAllStudent = async () => {
 
   return mockData;
 };
+
+export const searchStudent = async (searchValue) => {
+  await delayAsync(2000);
+
+  return mockData;
+};

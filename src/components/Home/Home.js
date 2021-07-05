@@ -11,23 +11,26 @@ const Home = () => {
   const [searchingValue, setSearchingValue] = useState("");
 
   const handleSearch = (inputVal) => {
-    setSearchingValue(inputVal);
-
-    // if (inputVal === "") {
-    //   setData(mockData);
-    // }
-    // const result = mockData.filter((student) =>
-    //   student.name.includes(inputVal)
-    // );
-    // setData(result);
+    setSearchingValue(inputVal.toLowerCase());
   };
 
-  const filteredList = []; //
+  const renderStudentList = () => {
+    const filteredList = data.filter((i) =>
+      i.name.toLowerCase().includes(searchingValue)
+    );
+
+    return <StudentList data={filteredList} />;
+  };
+
+  const renderStatus = () => {
+    if (loading) return "Loading...";
+    if (error) return "Error...";
+  };
 
   return (
     <div>
       <AppHeader handleSearch={handleSearch} />
-      <StudentList data={filteredList} />
+      {success ? renderStudentList() : renderStatus()}
     </div>
   );
 };
