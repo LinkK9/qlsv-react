@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Avatar, Typography } from "antd";
+import { Avatar, Typography } from "antd";
 import { FaFemale, FaMale } from "react-icons/fa";
 import Styles from "./StudentCard.module.css";
 

@@ -1,0 +1,10 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.studentListContainer {
+  overflow: auto;
+  flex-grow: 1;
+}

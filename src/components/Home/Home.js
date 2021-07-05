@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { AppHeader } from "../AppHeader/AppHeader";
 import StudentList from "../StudentList/StudentList";
 import { usePromiseResult } from "use-promise-result";
-import { getAllStudent, searchStudent } from "../../servies/StudentService";
+import { searchStudent } from "../../servies/StudentService";
+import { Pagination } from "antd";
+
+import styles from "./Home.module.css";
 
 const Home = () => {
   const [searchingValue, setSearchingValue] = useState("");
+
+  const [current, setCurrent] = useState(1);
 
   const { loading, error, success, reload, data } = usePromiseResult(() =>
     searchStudent(searchingValue)
@@ -25,10 +30,17 @@ const Home = () => {
     if (error) return "Error...";
   };
 
+  const handlePageChanged = (page) => {
+    setCurrent(page);
+  };
+
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <AppHeader handleSearch={handleSearch} />
-      {success ? renderStudentList() : renderStatus()}
+      <div className={styles.studentListContainer}>
+        {success ? renderStudentList() : renderStatus()}
+      </div>
+      <Pagination current={current} onChange={handlePageChanged} total={50} />
     </div>
   );
 };

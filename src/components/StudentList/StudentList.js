@@ -7,6 +7,7 @@ const StudentList = ({ data }) => {
       {data.map((studentData) => (
         <StudentCard
           id={studentData.id}
+          key={studentData.id}
           avatar={studentData.avatar}
           name={studentData.name}
           phone={studentData.phone}
