@@ -1,0 +1,13 @@
+.navHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #1890ff;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+h2 {
+	margin-bottom: 0 !important;
+	color: white !important;
+}

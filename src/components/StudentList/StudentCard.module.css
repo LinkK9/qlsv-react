@@ -1,0 +1,15 @@
+.cardBody {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px;
+	margin: 8px;
+	border: 1px solid #5a5a5a;
+	border-radius: 8px;
+	box-shadow: 1px;
+}
+
+.avatar {
+	display: flex;
+	align-items: center;
+}
