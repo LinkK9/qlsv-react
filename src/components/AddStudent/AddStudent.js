@@ -3,7 +3,6 @@ import { Modal, Button, Space } from "antd";
 import { ExclamationCircleOutlined, LeftOutlined } from "@ant-design/icons";
 import style from "./AddStudent.module.css";
 import { Formik, Field, ErrorMessage } from "formik";
-import { useDispatch } from "react-redux";
 import { getAvatarUrlFromFileName } from "../../utils/Utils";
 import * as Yup from "yup";
 import { addStudent } from "../../servies/StudentService";
@@ -30,7 +29,7 @@ function showConfirm(onOk, onCancel) {
 
 export default function NewStudent() {
   // const dispatch = useDispatch();
-  const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
 
   const handleSaveAdded = async (values) => {
     // console.log(values);
