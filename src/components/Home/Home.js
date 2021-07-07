@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AppHeader } from "../AppHeader/AppHeader";
 import StudentList from "../StudentList/StudentList";
 import { usePromiseResult } from "use-promise-result";
