@@ -28,6 +28,8 @@ function showConfirm(onOk, onCancel) {
 }
 
 export default function NewStudent() {
+  console.log("render");
+
   // const dispatch = useDispatch();
   //   const dispatch = useDispatch();
 
