@@ -1,7 +1,6 @@
 import React from "react";
 import { Modal, Button, Space } from "antd";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { ExclamationCircleOutlined, LeftOutlined } from "@ant-design/icons";
 import style from "./AddStudent.module.css";
 import { Formik, Field, ErrorMessage } from "formik";
 import { push } from "connected-react-router";
@@ -90,7 +89,7 @@ export default function NewStudent() {
                 className={style.topbar}
                 onClick={() => handleCancelAdding(dirty)}
               >
-                <ArrowBackIosIcon className={style.arrowIcon} />
+                <LeftOutlined className={style.arrowIcon} />
                 <h2>Danh sách</h2>
               </div>
               <form className={style.form}>
