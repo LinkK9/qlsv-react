@@ -1,0 +1,109 @@
+.newStudent {
+  height: 100vh;
+}
+.topbar {
+  background-color: #1890ff;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px;
+}
+
+.topbar .arrowIcon {
+  margin-left: 2%;
+  cursor: pointer;
+}
+
+.topbar h2 {
+  margin-left: 1%;
+  cursor: pointer;
+  margin: 0px;
+  color: white;
+}
+
+.form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+.form > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3vh;
+  width: 100%;
+  height: 5vh;
+}
+
+.form .firstContent {
+  height: 10vh;
+  align-items: center;
+}
+
+.img_container {
+  height: 95%;
+  width: 25%;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.img_container img {
+  cursor: pointer;
+  width: 80%;
+  margin: auto;
+}
+
+.standard1 {
+  height: 100%;
+  flex: 0 0 70%;
+  border: 0.5px solid rgb(191, 191, 191);
+  padding-left: 2%;
+}
+
+.standard2 {
+  height: 50%;
+  flex-grow: 1;
+  border: 0.5px solid rgb(191, 191, 191);
+  padding-left: 10px;
+}
+
+.gender {
+  display: flex;
+  align-items: center;
+  flex: 0 0 70%;
+}
+
+.gender > div {
+  display: flex;
+  align-items: center;
+}
+
+.manCheckBox {
+  margin-right: 16px;
+}
+
+.gender input {
+  margin-right: 5%;
+  cursor: pointer;
+}
+
+.button_group {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  margin: auto;
+}
+
+.file {
+  display: none;
+}
