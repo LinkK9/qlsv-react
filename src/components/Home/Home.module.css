@@ -9,10 +9,15 @@
   flex-grow: 1;
 }
 
-
 .pagination {
-	display: flex;
-	justify-content: center;
-	margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
 
+.spinner {
+  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  text-align: center;
 }

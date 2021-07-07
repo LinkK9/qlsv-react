@@ -3,7 +3,7 @@ import { AppHeader } from "../AppHeader/AppHeader";
 import StudentList from "../StudentList/StudentList";
 import { usePromiseResult } from "use-promise-result";
 import { searchStudent } from "../../servies/StudentService";
-import { Pagination } from "antd";
+import { Pagination , Spin} from "antd";
 
 import styles from "./Home.module.css";
 
@@ -28,7 +28,7 @@ const Home = () => {
   };
 
   const renderStatus = () => {
-    if (loading) return "Loading...";
+    if (loading) return <div className={styles.spinner}><Spin tip='Loading...' /></div>;
     if (error) return "Error...";
   };
 
