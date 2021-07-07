@@ -30,3 +30,5 @@ export const searchStudent = async (searchValue, page, pageSize) => {
       };
     });
 };
+
+export const addStudent = async () => {};

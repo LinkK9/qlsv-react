@@ -2,13 +2,13 @@ import React from "react";
 import { Modal, Button, Space } from "antd";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import style from "./NewStudent.module.css";
+import style from "./AddStudent.module.css";
 import { Formik, Field, ErrorMessage } from "formik";
 import { push } from "connected-react-router";
 import { useDispatch } from "react-redux";
-import { Utils } from "../utils/Utils";
+import { getAvatarUrlFromFileName } from "../../utils/Utils";
 import * as Yup from "yup";
-import { addStudent } from "../studentService";
+import { addStudent } from "../../servies/StudentService";
 
 const { confirm } = Modal;
 
@@ -108,7 +108,7 @@ export default function NewStudent() {
                         }}
                       />
                       <img
-                        src={Utils.getAvatarUrlFromFileName(values.img)}
+                        src={getAvatarUrlFromFileName(values.img)}
                         alt={values.name}
                       />
                     </label>
