@@ -6,6 +6,7 @@ import { Formik, Field, ErrorMessage } from "formik";
 import { getAvatarUrlFromFileName } from "../../utils/Utils";
 import * as Yup from "yup";
 import { addStudent } from "../../servies/StudentService";
+import { useHistory } from "react-router-dom";
 
 const { confirm } = Modal;
 
@@ -28,7 +29,7 @@ function showConfirm(onOk, onCancel) {
 }
 
 export default function NewStudent() {
-  console.log("render");
+  const history = useHistory();
 
   // const dispatch = useDispatch();
   //   const dispatch = useDispatch();
@@ -39,12 +40,12 @@ export default function NewStudent() {
   };
 
   const handleCancelAdding = (dirty) => {
-    // if (!dirty) dispatch(push("/"));
-    // else
-    //   showConfirm(
-    //     () => dispatch(push("/")),
-    //     () => {}
-    //   );
+    if (!dirty) history.push("/");
+    else
+      showConfirm(
+        () => history.push("/"),
+        () => {}
+      );
   };
 
   return (
