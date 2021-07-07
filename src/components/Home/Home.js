@@ -11,7 +11,7 @@ const Home = () => {
   const [searchingValue, setSearchingValue] = useState("");
 
   const [current, setCurrent] = useState(1);
-  const [takeItem, setTakeItem] = useState(5);
+  const [takeItem] = useState(5);
 
   const { loading, error, success, reload, data } = usePromiseResult(() =>
     searchStudent(searchingValue, current, takeItem)
@@ -25,7 +25,6 @@ const Home = () => {
   };
 
   const renderStudentList = () => {
-    const skipItem = (current - 1) * takeItem;
     return <StudentList data={data.data} />;
   };
 
@@ -41,7 +40,7 @@ const Home = () => {
 
   const handlePageChanged = (page) => {
     setCurrent(page);
-	reload();
+    reload();
   };
 
   const renderPagination = () => {
