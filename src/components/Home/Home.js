@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppHeader } from "../AppHeader/AppHeader";
 import StudentList from "../StudentList/StudentList";
 import { usePromiseResult } from "use-promise-result";
@@ -11,6 +11,7 @@ const Home = () => {
   const [searchingValue, setSearchingValue] = useState("");
 
   const [current, setCurrent] = useState(1);
+  const [takeItem, setTakeItem] = useState(3);
 
   const { loading, error, success, reload, data } = usePromiseResult(() =>
     searchStudent(searchingValue)
@@ -22,7 +23,8 @@ const Home = () => {
   };
 
   const renderStudentList = () => {
-    return <StudentList data={data} />;
+    const skipItem = (current - 1) * takeItem;
+    return <StudentList data={data.slice(skipItem, skipItem + takeItem)} />;
   };
 
   const renderStatus = () => {
@@ -34,13 +36,26 @@ const Home = () => {
     setCurrent(page);
   };
 
+  const renderPagination = () => {
+    if (success) {
+      return (
+        <Pagination
+          current={current}
+          onChange={handlePageChanged}
+          total={data.length}
+          defaultPageSize={takeItem}
+        />
+      );
+    }
+  };
+
   return (
     <div className={styles.homeContainer}>
       <AppHeader handleSearch={handleSearch} />
       <div className={styles.studentListContainer}>
         {success ? renderStudentList() : renderStatus()}
       </div>
-      <Pagination current={current} onChange={handlePageChanged} total={50} />
+      <div className={styles.pagination}>{renderPagination()}</div>
     </div>
   );
 };

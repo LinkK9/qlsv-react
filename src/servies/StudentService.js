@@ -23,3 +23,4 @@ export const searchStudent = async (searchValue) => {
 
   return mockData.filter((i) => i.name.toLowerCase().includes(searchValue));
 };
+
