@@ -17,10 +17,8 @@ const Home = () => {
     searchStudent(searchingValue, current, takeItem)
   );
 
-  console.log(data);
-
   const handleSearch = (inputVal) => {
-    setSearchingValue(inputVal.toLowerCase());
+    setSearchingValue(inputVal);
     reload();
   };
 

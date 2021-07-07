@@ -1,4 +1,4 @@
-import mockData from "../MOCK_DATA";
+import axios from "axios";
 
 const delayAsync = (timeout) => {
   return new Promise((resovle) => {
@@ -8,23 +8,25 @@ const delayAsync = (timeout) => {
   });
 };
 
-export const getAllStudent = async () => {
-  await delayAsync(2000);
-
-  return mockData;
-};
-
 export const searchStudent = async (searchValue, page, pageSize) => {
-  await delayAsync(2000);
+  await delayAsync(1000);
 
-  const filteredData = !searchValue
-    ? mockData
-    : mockData.filter((i) => i.name.toLowerCase().includes(searchValue));
-
-  const skip = (page - 1) * pageSize;
-
-  return {
-    data: filteredData.slice(skip, skip + pageSize),
-    meta: { totalElement: filteredData.length },
-  };
+  return axios
+    .get("http://localhost:5000/Student/GetStudents", {
+      params: {
+        search: searchValue,
+        page,
+        pageSize,
+      },
+    })
+    .then((respond) => respond.data)
+    .then((data) => {
+      return {
+        ...data,
+        meta: {
+          ...data.meta,
+          totalElement: data.meta.totalItem,
+        },
+      };
+    });
 };
