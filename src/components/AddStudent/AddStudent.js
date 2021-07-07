@@ -99,7 +99,9 @@ export default function NewStudent() {
                         id="imageUpload"
                         className={style.file}
                         onChange={(e) => {
-                          // const urlImg = URL.createObjectURL(e.target.files[0]);
+                          const urlImg = URL.createObjectURL(e.target.files[0]);
+                          console.log(urlImg);
+                          console.log(e.target.files[0]);
                           setFieldValue("img", e.target.files[0].name, true);
                           setFieldValue("imageFile", e.target.files[0], true);
                         }}

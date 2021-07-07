@@ -31,4 +31,22 @@ export const searchStudent = async (searchValue, page, pageSize) => {
     });
 };
 
-export const addStudent = async () => {};
+export const addStudent = async (newStudent) => {
+  let fd = new FormData();
+
+  newStudent = {
+    ...newStudent,
+    gender: Number.parseInt(newStudent.gender),
+  };
+  for (const key in newStudent) {
+    if (Object.hasOwnProperty.call(newStudent, key)) {
+      const value = newStudent[key];
+      fd.append(key, value);
+    }
+  }
+  return await axios.post(addStudentEndPoint, fd, {
+    headers: {
+      "Content-Type": `multipart/form-data boundary=${fd._boundary}`,
+    },
+  });
+};
