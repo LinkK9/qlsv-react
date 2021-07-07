@@ -14,13 +14,17 @@ export const getAllStudent = async () => {
   return mockData;
 };
 
-export const searchStudent = async (searchValue) => {
+export const searchStudent = async (searchValue, page, pageSize) => {
   await delayAsync(2000);
 
-  if (!searchValue) {
-    return mockData;
-  }
+  const filteredData = !searchValue
+    ? mockData
+    : mockData.filter((i) => i.name.toLowerCase().includes(searchValue));
 
-  return mockData.filter((i) => i.name.toLowerCase().includes(searchValue));
+  const skip = (page - 1) * pageSize;
+
+  return {
+    data: filteredData.slice(skip, skip + pageSize),
+    meta: { totalElement: filteredData.length },
+  };
 };
-

@@ -3,7 +3,7 @@ import { AppHeader } from "../AppHeader/AppHeader";
 import StudentList from "../StudentList/StudentList";
 import { usePromiseResult } from "use-promise-result";
 import { searchStudent } from "../../servies/StudentService";
-import { Pagination , Spin} from "antd";
+import { Pagination, Spin } from "antd";
 
 import styles from "./Home.module.css";
 
@@ -11,11 +11,13 @@ const Home = () => {
   const [searchingValue, setSearchingValue] = useState("");
 
   const [current, setCurrent] = useState(1);
-  const [takeItem, setTakeItem] = useState(3);
+  const [takeItem, setTakeItem] = useState(5);
 
   const { loading, error, success, reload, data } = usePromiseResult(() =>
-    searchStudent(searchingValue)
+    searchStudent(searchingValue, current, takeItem)
   );
+
+  console.log(data);
 
   const handleSearch = (inputVal) => {
     setSearchingValue(inputVal.toLowerCase());
@@ -24,16 +26,22 @@ const Home = () => {
 
   const renderStudentList = () => {
     const skipItem = (current - 1) * takeItem;
-    return <StudentList data={data.slice(skipItem, skipItem + takeItem)} />;
+    return <StudentList data={data.data} />;
   };
 
   const renderStatus = () => {
-    if (loading) return <div className={styles.spinner}><Spin tip='Loading...' /></div>;
+    if (loading)
+      return (
+        <div className={styles.spinner}>
+          <Spin tip="Loading..." />
+        </div>
+      );
     if (error) return "Error...";
   };
 
   const handlePageChanged = (page) => {
     setCurrent(page);
+	reload();
   };
 
   const renderPagination = () => {
@@ -42,7 +50,7 @@ const Home = () => {
         <Pagination
           current={current}
           onChange={handlePageChanged}
-          total={data.length}
+          total={data.meta.totalElement}
           defaultPageSize={takeItem}
         />
       );
