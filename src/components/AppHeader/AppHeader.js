@@ -3,7 +3,7 @@ import { Typography, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import SearchBar from "./SearchBar";
 import styles from "./AppHeader.module.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const { Title } = Typography;
 
