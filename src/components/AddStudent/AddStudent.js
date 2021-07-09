@@ -35,8 +35,8 @@ export default function NewStudent() {
   //   const dispatch = useDispatch();
 
   const handleSaveAdded = async (values) => {
-    // console.log(values);
     await addStudent(values);
+    history.push("/");
   };
 
   const handleCancelAdding = (dirty) => {

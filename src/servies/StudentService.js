@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API = 'http://localhost:5000/Student';
-const addStudentEndPoint = API + '/AddStudent'
+const API = "http://localhost:5000/Student";
+const addStudentEndPoint = API + "/AddStudent";
 
 const delayAsync = (timeout) => {
   return new Promise((resovle) => {
@@ -26,6 +26,12 @@ export const searchStudent = async (searchValue, page, pageSize) => {
     .then((data) => {
       return {
         ...data,
+        data: data.data.map((i) => {
+          return {
+            ...i,
+            avatar: i.img,
+          };
+        }),
         meta: {
           ...data.meta,
           totalElement: data.meta.totalItem,
