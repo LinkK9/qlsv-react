@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const API = 'http://localhost:5000/Student';
+const addStudentEndPoint = API + '/AddStudent'
+
 const delayAsync = (timeout) => {
   return new Promise((resovle) => {
     setTimeout(() => {

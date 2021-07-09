@@ -36,7 +36,7 @@ export default function NewStudent() {
 
   const handleSaveAdded = async (values) => {
     // console.log(values);
-    // await addStudent(values);
+    await addStudent(values);
   };
 
   const handleCancelAdding = (dirty) => {
@@ -100,14 +100,12 @@ export default function NewStudent() {
                         className={style.file}
                         onChange={(e) => {
                           const urlImg = URL.createObjectURL(e.target.files[0]);
-                          console.log(urlImg);
-                          console.log(e.target.files[0]);
-                          setFieldValue("img", e.target.files[0].name, true);
-                          setFieldValue("imageFile", e.target.files[0], true);
+                          setFieldValue("img", e.target.files[0], true);
+                          setFieldValue("imageFile", urlImg, true);
                         }}
                       />
                       <img
-                        src={getAvatarUrlFromFileName(values.img)}
+                        src={values.imageFile}
                         alt={values.name}
                       />
                     </label>
