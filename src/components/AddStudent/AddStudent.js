@@ -52,7 +52,7 @@ export default function NewStudent() {
     <div className={style.newStudent}>
       <Formik
         initialValues={{
-          img: "default.png",
+          img: getAvatarUrlFromFileName("default.jpeg"),
           imageFile: null,
           name: "",
           phoneNumber: "",
@@ -100,14 +100,11 @@ export default function NewStudent() {
                         className={style.file}
                         onChange={(e) => {
                           const urlImg = URL.createObjectURL(e.target.files[0]);
-                          setFieldValue("img", e.target.files[0], true);
-                          setFieldValue("imageFile", urlImg, true);
+                          setFieldValue("img", urlImg, true);
+                          setFieldValue("imageFile", e.target.files[0], true);
                         }}
                       />
-                      <img
-                        src={values.imageFile}
-                        alt={values.name}
-                      />
+                      <img src={values.img} alt={values.name} />
                     </label>
                   </div>
                   <Field className={style.standard2} name="name" type="text" />
