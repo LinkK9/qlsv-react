@@ -1,11 +1,8 @@
-import { useState } from "react"
-import { Redirect, useHistory } from "react-router-dom";
-import { Login } from "../../servies/UserService";
+import { Redirect } from "react-router-dom";
 
-export function LoginPage() {
+export function LogoutPage() {
 
     localStorage.removeItem('token');
 
     return <Redirect to="/login" />
-
 }
