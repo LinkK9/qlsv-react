@@ -5,9 +5,20 @@ import AddStudent from "./components/AddStudent/AddStudent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ModifyStudent from "./components/ModifyStudent/ModifyStudent";
 import { LoginPage } from "./components/Login/Login";
-import {PrivateRoute} from './components/PrivateRoute';
+import { PrivateRoute } from './components/PrivateRoute';
+import axios from "axios";
 
 // add-student
+
+axios.interceptors.response.use(response => {
+  return response;
+}, error => {
+ if (error.response.status === 401) {
+  window.location.href = "/logout"
+ }
+ return error;
+});
+
 
 function App() {
   return (
