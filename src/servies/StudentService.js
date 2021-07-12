@@ -1,19 +1,12 @@
 import axios from "axios";
 import { getAvatarUrlFromFileName } from "../utils/Utils";
 import moment from "moment";
+import { delayAsync } from "../utils/Utils";
 
 const API = "http://localhost:5000/Student";
 const addStudentEndPoint = API + "/AddStudent";
 const getStudentEndPoint = API + "/GetStudent";
 const modifyStudentEndPoint = API + "/ModifyStudent";
-
-const delayAsync = (timeout) => {
-  return new Promise((resovle) => {
-    setTimeout(() => {
-      resovle();
-    }, timeout);
-  });
-};
 
 export const searchStudent = async (searchValue, page, pageSize) => {
   await delayAsync(1000);
