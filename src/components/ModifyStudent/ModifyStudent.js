@@ -5,7 +5,7 @@ import { getStudent, modifyStudentAction } from "../../servies/StudentService";
 
 export default function ModifyStudent() {
   let { id } = useParams();
-  const { loading, error, success, reload, data } = usePromiseResult(() =>
+  const { loading, error, success, data } = usePromiseResult(() =>
     getStudent(id)
   );
 

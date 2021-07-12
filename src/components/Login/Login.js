@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Login } from "../../servies/UserService";
 
 export function LoginPage() {
 
@@ -13,8 +14,9 @@ export function LoginPage() {
         setPassword(e.target.value);
     }
 
-    const handleLoginButtonClick = () => {
-        
+    const handleLoginButtonClick = async () => {
+        const token = await Login(userName, password);
+        localStorage.setItem("token", token);
     }
 
     return (

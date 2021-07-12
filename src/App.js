@@ -4,6 +4,8 @@ import AddStudent from "./components/AddStudent/AddStudent";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ModifyStudent from "./components/ModifyStudent/ModifyStudent";
+import { LoginPage } from "./components/Login/Login";
+import {PrivateRoute} from './components/PrivateRoute';
 
 // add-student
 
@@ -12,15 +14,18 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/add-student">
+          <PrivateRoute path="/add-student">
             <AddStudent />
+          </PrivateRoute>
+          <Route path="/login">
+            <LoginPage />
           </Route>
-          <Route path="/modify-student/:id">
+          <PrivateRoute path="/modify-student/:id">
             <ModifyStudent />
-          </Route>
-          <Route exact path="/">
+          </PrivateRoute>
+          <PrivateRoute exact path="/">
             <Home />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     </div>
